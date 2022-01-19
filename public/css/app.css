@@ -8,6 +8,28 @@
   width: auto !important;
 }
 
+.m-right-20 {
+  margin-right: 20px;
+}
+
+.scrollY-120{
+  overflow-x: hidden !important;
+  overflow-x: scroll;
+  height: 120px;
+}
+
+.scrollY-100{
+  overflow-x: hidden !important;
+  overflow-x: scroll;
+  height: 100px;
+}
+
+.scrollY-70{
+  overflow-x: hidden !important;
+  overflow-x: scroll;
+  height: 70px;
+}
+
 .table-responsive .table td{
   vertical-align: middle !important; 
 }

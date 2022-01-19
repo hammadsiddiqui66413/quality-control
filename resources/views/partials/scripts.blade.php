@@ -75,7 +75,7 @@
                             // $('.amount').html(old_html+input);
                             let elem = $(that).parent().parent().siblings('.amount');
                             $(elem).empty();
-                            $(elem).append($('<input type="text" readonly name="amount[]" value="{{ old('amount[]') }}" placeholder="Unit Amount" class="form-control amount" value="'+data.amount+'">'));
+                            $(elem).append($('<input type="text" readonly name="amount[]" placeholder="Unit Amount" class="form-control amount" value="'+data.amount+'">'));
                         }
                     });
 				});

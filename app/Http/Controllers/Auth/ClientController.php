@@ -1,7 +1,13 @@
 <?php
 namespace App\Http\Controllers\Auth;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Terminal;
+use App\Models\Client;
+use App\Models\Subscription;
+use App\Models\Report;
+use App\Helpers\Helper;
 
 class ClientController extends Controller
 {
@@ -21,6 +27,42 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('client');
+        return view('clients.index');
+    }
+
+    public function terminals()
+    {
+        $terminals = Terminal::where('client_id', auth()->user()->id)->get();
+        $i = 1;
+        return view('clients.terminal', compact('terminals', 'i'));
+    }
+
+    public function invoice()
+    {
+        $invoiceNo = Helper::rand_number(14);
+        $client = Client::where('id', auth()->user()->id)->first();
+        $terminals = Terminal::where('client_id', auth()->user()->id)->get();
+        $count = Terminal::where('client_id', auth()->user()->id)->get()->count();
+        $a = 1;
+        $grandTotal = 0;
+        $subTotal = 0;
+
+        for($i=0; $i<$count; $i++)
+        {
+            $amount[$i] = $terminals[$i]->plan->amount; 
+            $subTotal += $amount[$i];
+        }
+        $vat = $subTotal*5/100;
+        $discount = $subTotal*0/100;
+        $grandTotal = $subTotal+$vat-$discount;
+
+        return view('clients.invoice', compact('terminals', 'grandTotal', 'a', 'invoiceNo', 'vat', 'discount', 'subTotal', 'client'));
+    }
+
+    public function reports()
+    {
+        $reports = Report::where('client_id', auth()->user()->id)->get();
+        $i = 1;
+        return view('clients.reports', compact('reports', 'i'));
     }
 }

@@ -66,6 +66,9 @@ Route::prefix('client')->group(function() {
     Route::post('/login', [ClientLoginController::class,'login'])->name('client.login.submit');
     Route::get('/logout', [ClientLoginController::class,'logout'])->name('client.logout');
     Route::get('/', [ClientController::class,'index'])->name('client.dashboard');
+    Route::get('/terminals', [ClientController::class,'terminals'])->name('client.terms');
+    Route::get('/invoice', [ClientController::class,'invoice'])->name('client.invoice');
+    Route::get('/reports', [ClientController::class,'reports'])->name('client.reports');
 });
 
 Route::prefix('terminal')->group(function() {
@@ -73,7 +76,8 @@ Route::prefix('terminal')->group(function() {
     Route::post('/login', [TerminalLoginController::class,'login'])->name('terminal.login.submit');
     Route::get('logout/', [TerminalLoginController::class,'logout'])->name('terminal.logout');
     Route::get('/', [TerminalController::class,'index'])->name('terminal.dashboard');
-   }) ;
+    Route::get('/reports', [TerminalController::class,'reports'])->name('terminal.reports');
+}) ;
 
     Route::get('/', [PagesController::class, 'index'])->name('main');
     Route::get('/view-plans', [PagesController::class, 'plans'])->name('view.plans');

@@ -107,7 +107,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="amount">
-                                                    <input readonly type="number" name='amount[]' value="{{ old('amount[]') }}" value="{{$plan->amount}}" class="form-control"/>
+                                                    <input readonly type="number" name='amount[]' value="{{$plan->amount}}" class="form-control"/>
                                                 </td>
                                             </tr>
                                             <tr id='addr1'></tr>

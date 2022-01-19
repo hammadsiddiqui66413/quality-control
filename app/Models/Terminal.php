@@ -30,4 +30,19 @@ class Terminal extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Reports::class);
+    }
 }

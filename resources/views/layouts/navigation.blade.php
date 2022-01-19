@@ -1,4 +1,66 @@
 <ul class="nav flex-column pt-3 pt-md-0">
+    @if(Illuminate\Support\Str::contains(Route::currentRouteName(), 'client'))
+    <li class="nav-item">
+        <a href="{{ route('client.dashboard') }}" class="nav-link d-flex align-items-center">
+            <span class="sidebar-icon me-1">
+                <img src="{{ asset('images/Quality-Control.jpg') }}" height="30" width="35" alt="Volt Logo">
+            </span>
+            <span class="mt-1 ms-1 sidebar-text">
+                Dashboard
+            </span>
+        </a>
+    </li>
+
+    <li class="nav-item bt-1 {{ request()->routeIs('client.terms') ? 'active' : '' }}">
+        <a href="{{ route('client.terms') }}" class="nav-link">
+            <span class="sidebar-icon me-3">
+                <i class="fas fa-user-alt fa-fw"></i>
+            </span>
+            <span class="sidebar-text">{{ __('Terminals') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item bt-1 {{ request()->routeIs('client.reports') ? 'active' : '' }}">
+        <a href="{{ route('client.reports') }}" class="nav-link">
+            <span class="sidebar-icon me-3">
+                <i class="fas fa-user-alt fa-fw"></i>
+            </span>
+            <span class="sidebar-text">{{ __('Reports') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item bt-1 {{ request()->routeIs('client.invoice') ? 'active' : '' }}">
+        <a href="{{ route('client.invoice') }}" class="nav-link">
+            <span class="sidebar-icon me-3">
+                <i class="fas fa-user-alt fa-fw"></i>
+            </span>
+            <span class="sidebar-text">{{ __('Invoice') }}</span>
+        </a>
+    </li>
+
+    @elseif(Illuminate\Support\Str::contains(Route::currentRouteName(), 'terminal'))
+    
+    <li class="nav-item">
+        <a href="{{ route('terminal.dashboard') }}" class="nav-link d-flex align-items-center">
+            <span class="sidebar-icon me-1">
+                <img src="{{ asset('images/Quality-Control.jpg') }}" height="30" width="35" alt="Volt Logo">
+            </span>
+            <span class="mt-1 ms-1 sidebar-text">
+                Dashboard
+            </span>
+        </a>
+    </li>
+
+    <li class="nav-item bt-1 {{ request()->routeIs('terminal.reports') ? 'active' : '' }}">
+        <a href="{{ route('terminal.reports') }}" class="nav-link">
+            <span class="sidebar-icon me-3">
+                <i class="fas fa-user-alt fa-fw"></i>
+            </span>
+            <span class="sidebar-text">{{ __('Reports') }}</span>
+        </a>
+    </li>
+
+    @else
     <li class="nav-item">
         <a href="{{ route('home') }}" class="nav-link d-flex align-items-center">
             <span class="sidebar-icon me-1">
@@ -36,6 +98,7 @@
             <span class="sidebar-text">{{ __('Users') }}</span>
         </a>
     </li>
+    @endif
 {{--
     <li class="nav-item">
         <span class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse"

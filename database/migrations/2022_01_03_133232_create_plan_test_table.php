@@ -14,9 +14,9 @@ class CreatePlanTestTable extends Migration
     public function up()
     {
         Schema::create('plan_test', function (Blueprint $table) {
-            $table->unsignedBigInteger('plan_id')->nullable();
+            $table->unsignedBigInteger('plan_id');
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
-            $table->unsignedBigInteger('test_id')->nullable();
+            $table->unsignedBigInteger('test_id');
             $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');
             $table->primary(['plan_id','test_id']);
             $table->timestamps();

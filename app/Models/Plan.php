@@ -17,4 +17,9 @@ class Plan extends Model
         return $this->belongsToMany(Test::class, 'plan_test', 'plan_id', 'test_id')
                         ->withTimeStamps();
     }
+
+    public function terminals()
+    {
+        return $this->hasMany(Terminal::class);
+    }
 }

@@ -29,4 +29,9 @@ class Client extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function reports()
+    {
+        return $this->hasMany(Reports::class);
+    }
 }
