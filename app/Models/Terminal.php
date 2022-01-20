@@ -43,11 +43,17 @@ class Terminal extends Authenticatable
 
     public function reports()
     {
-        return $this->hasMany(Reports::class);
+        return $this->hasMany(Report::class);
     }
 
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
 }

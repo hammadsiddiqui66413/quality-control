@@ -48,6 +48,10 @@ class TerminalController extends Controller
 
         $reports = Report::where('job_id', $id)->get();
         $i = 1;
+        $terminal = Terminal::where('id', auth()->user()->id)->first();
+        $job = Job::where('id', $id)->first();
+        $client = $terminal->client;
+
         return view('terminal.reports', compact('reports', 'i'));
     }
 

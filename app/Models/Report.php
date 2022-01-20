@@ -18,4 +18,9 @@ class Report extends Model
     {
         return $this->belongsTo(Terminal::class);
     }
+
+    public function job()
+    {
+        return $this->belongsTo(Job::class);
+    }
 }

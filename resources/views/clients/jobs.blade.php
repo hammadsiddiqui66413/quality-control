@@ -15,7 +15,6 @@
                                             <th class="text-center">Job</th>
                                             <th class="text-center">Device ID</th>
                                             <th class="text-center">Terminal</th>
-                                            <th class="text-center">Client</th>
                                             <th class="text-center">Report</th>
                                         </tr>
                                     </thead>

@@ -40,4 +40,9 @@ class Client extends Authenticatable
     {
         return $this->hasMany(Terminal::class);
     }
+
+     public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }

@@ -71,6 +71,10 @@ class ClientController extends Controller
     {
         $reports = Report::where('job_id', $id)->get();
         $i = 1;
-        return view('clients.reports', compact('reports', 'i'));
+        $client = Client::where('id', auth()->user()->id)->first();
+        $job = Job::where('id', $id)->first();
+        $terminal = $job->terminal;
+        
+        return view('clients.reports', compact('reports', 'i','client','terminal','job'));
     }
 }

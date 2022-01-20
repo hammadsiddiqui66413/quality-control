@@ -14,7 +14,7 @@
     <li class="nav-item bt-1 {{ request()->routeIs('client.terms') ? 'active' : '' }}">
         <a href="{{ route('client.terms') }}" class="nav-link">
             <span class="sidebar-icon me-3">
-                <i class="fas fa-user-alt fa-fw"></i>
+                <i class="fa fa-terminal"></i>
             </span>
             <span class="sidebar-text">{{ __('Terminals') }}</span>
         </a>
@@ -23,7 +23,7 @@
     <li class="nav-item bt-1 {{ request()->routeIs('client.jobs') ? 'active' : '' }}">
         <a href="{{ route('client.jobs') }}" class="nav-link">
             <span class="sidebar-icon me-3">
-                <i class="fas fa-user-alt fa-fw"></i>
+                <i class="fa fa-tasks"></i>
             </span>
             <span class="sidebar-text">{{ __('Jobs') }}</span>
         </a>
@@ -32,14 +32,14 @@
     <li class="nav-item bt-1 {{ request()->routeIs('client.invoice') ? 'active' : '' }}">
         <a href="{{ route('client.invoice') }}" class="nav-link">
             <span class="sidebar-icon me-3">
-                <i class="fas fa-user-alt fa-fw"></i>
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
             </span>
             <span class="sidebar-text">{{ __('Invoice') }}</span>
         </a>
     </li>
 
     @elseif(Illuminate\Support\Str::contains(Route::currentRouteName(), 'terminal'))
-    
+
     <li class="nav-item">
         <a href="{{ route('terminal.dashboard') }}" class="nav-link d-flex align-items-center">
             <span class="sidebar-icon me-1">
@@ -54,7 +54,7 @@
     <li class="nav-item bt-1 {{ request()->routeIs('terminal.jobs') ? 'active' : '' }}">
         <a href="{{ route('terminal.jobs') }}" class="nav-link">
             <span class="sidebar-icon me-3">
-                <i class="fas fa-user-alt fa-fw"></i>
+                <i class="fa fa-tasks"></i>
             </span>
             <span class="sidebar-text">{{ __('Jobs') }}</span>
         </a>
@@ -67,7 +67,7 @@
                 <img src="{{ asset('images/Quality-Control.jpg') }}" height="30" width="35" alt="Volt Logo">
             </span>
             <span class="mt-1 ms-1 sidebar-text">
-                Quality Control
+                Dashboard
             </span>
         </a>
     </li>

@@ -14,8 +14,6 @@
                                             <th class="text-center p-0 v-a-m">Sr.</th>
                                             <th class="text-center">Job</th>
                                             <th class="text-center">Device ID</th>
-                                            <th class="text-center">Terminal</th>
-                                            <th class="text-center">Client</th>
                                             <th class="text-center">Report</th>
                                         </tr>
                                     </thead>
@@ -26,7 +24,6 @@
                                             <td>Job-{{$job->id}}</td>
                                             <td>{{$job->status}}</td>
                                             <td>{{$job->ud_id}}</td>
-                                            <td>{{$job->terminal->name}}</td>
                                             <td>
                                                 <a href="{{ route('terminal.reports' ,$job->id) }}">View</a>
                                             </td>
