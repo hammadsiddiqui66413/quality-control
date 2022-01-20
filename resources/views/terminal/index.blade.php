@@ -35,6 +35,11 @@
                                 <div class="col-8 qr-code">
                                     {{ QrCode::size(200)->generate(\Crypt::encryptString('c_id:'.$terminal->client->id.' t_id:'.$terminal->id)) }}
                                 </div>
+                                <div class="col-12 qr-text">
+                                    {{-- <div class="text-center"> --}}
+                                        <h6 class="">Scan Here</h6>
+                                    {{-- </div> --}}
+                                </div>
                                 <div class="col-12 report-view">
 
                                 </div>

@@ -28,6 +28,12 @@
   text-align: right;
 }
 
+.qr-text{
+  text-align: right;
+  padding-right: 70px;
+  padding-top: 15px;
+}
+
 .scrollY-70{
   overflow-x: hidden !important;
   overflow-x: scroll;

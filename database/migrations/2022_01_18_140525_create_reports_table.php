@@ -23,6 +23,8 @@ class CreateReportsTable extends Migration
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->unsignedBigInteger('terminal_id');
             $table->foreign('terminal_id')->references('id')->on('terminals')->onDelete('cascade');
+            $table->unsignedBigInteger('job_id');
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->timestamps();
         });
     }

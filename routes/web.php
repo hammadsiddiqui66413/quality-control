@@ -68,7 +68,8 @@ Route::prefix('client')->group(function() {
     Route::get('/', [ClientController::class,'index'])->name('client.dashboard');
     Route::get('/terminals', [ClientController::class,'terminals'])->name('client.terms');
     Route::get('/invoice', [ClientController::class,'invoice'])->name('client.invoice');
-    Route::get('/reports', [ClientController::class,'reports'])->name('client.reports');
+    Route::get('/reports/{id}', [ClientController::class,'reports'])->name('client.reports');
+    Route::get('/jobs', [ClientController::class,'jobs'])->name('client.jobs');
 });
 
 Route::prefix('terminal')->group(function() {
@@ -76,7 +77,8 @@ Route::prefix('terminal')->group(function() {
     Route::post('/login', [TerminalLoginController::class,'login'])->name('terminal.login.submit');
     Route::get('logout/', [TerminalLoginController::class,'logout'])->name('terminal.logout');
     Route::get('/', [TerminalController::class,'index'])->name('terminal.dashboard');
-    Route::get('/reports', [TerminalController::class,'reports'])->name('terminal.reports');
+    Route::get('/reports/{id}', [TerminalController::class,'reports'])->name('terminal.reports');
+    Route::get('/jobs', [TerminalController::class,'jobs'])->name('terminal.jobs');
 }) ;
 
     Route::get('/', [PagesController::class, 'index'])->name('main');

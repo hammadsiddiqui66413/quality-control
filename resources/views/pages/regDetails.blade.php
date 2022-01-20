@@ -41,49 +41,39 @@
         <div id="ui-view" data-select2-id="ui-view">
             <div>
                 <div class="card">
-                    {{-- <div class="card-header">Invoice
-                        <strong>#BBB-10010110101938</strong>
-                        <a class="btn btn-sm btn-secondary float-right mr-1 d-print-none" href="#" onclick="javascript:window.print();" data-abc="true">
-                            <i class="fa fa-print"></i> Print</a>
-                        <a class="btn btn-sm btn-info float-right mr-1 d-print-none" href="#" data-abc="true">
-                            <i class="fa fa-save"></i> Save</a>
-                    </div> --}}
                     <div class="card-body">
-                        <div class="row mb-4">
-                            {{-- <div class="col-sm-4">
-                                <h6 class="mb-3">From:</h6>
-                                <div>
-                                    <strong>Cartlow.com</strong>
-                                </div>
-                                <div>42, Awesome Enclave</div>
-                                <div>Lahore City, Lahore, 10394</div>
-                                <div>Email: admin@cartlow.com</div>
-                                <div>Phone: +48 123 456 789</div>
-                            </div> --}}
-                            <div class="col-sm-12" style="border-bottom: 1px solid #dddddd;">
-                                <h6 class="mb-3" style="border-bottom: 1px solid black;display: inline-block;font-weight: 600;">Your Details:</h6>
-                                {{-- <div>
-                                    <strong>{{$requestData['first_name']}} {{$requestData['last_name']}}</strong>
-                                </div> --}}
-                                {{-- <div>42, Awesome Enclave</div>
-                                <div>New York City, New york, 10394</div> --}}
-                                <div>First Name: <strong>{{$requestData['first_name']}}</strong></div>
-                                <div>Last name: <strong>{{$requestData['last_name']}}</strong></div>
-                                <div>Email: <strong>{{$requestData['email']}}</strong>}</div>
-                                {{-- <div>Phone: +48 123 456 789</div> --}}
+                        <div class="row mb-4">    
+                            <div class="col-sm-4">
+                                <table class="table table-bordered table-clear">
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid #dddddd;display: inline-block;">
+                                            <td class="left">
+                                                <strong style="font-weight: 600;">Your Details:</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left">
+                                                <strong>First Name:</strong>
+                                            </td>
+                                            <td class="right">{{$requestData['first_name']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left">
+                                                <strong>Last Name:</strong>
+                                            </td>
+                                            <td class="right">{{$requestData['last_name']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left">
+                                                <strong>Email</strong>
+                                            </td>
+                                            <td class="right">
+                                                <strong>{{$requestData['email']}}</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            {{-- <div class="col-sm-6">
-                                <h6 class="mb-3">Details:</h6>
-                                <div>Invoice
-                                    <strong>#BBB-10010110101938</strong>
-                                </div>
-                                <div>April 30, 2019</div>
-                                <div>VAT: NYC09090390</div>
-                                <div>Account Name: BBBootstrap Inc</div>
-                                <div>
-                                    <strong>SWIFT code: 99 8888 7777 6666 5555</strong>
-                                </div>
-                            </div> --}}
                         </div>
                         <div class="row clearfix add-plan">
 						<div class="col-8">
@@ -93,7 +83,6 @@
                                         <tr>
                                             <th class="center">#</th>
                                             <th>Plan</th>
-                                            {{-- <th>Description</th> --}}
                                             <th class="center">Quantity</th>
                                             <th class="right">Unit Cost</th>
                                             <th class="right">Total</th>
@@ -104,7 +93,6 @@
 											<tr id='addr0'>
 												<td>{{$a++}}</td>
 												<td>{{$plan->name}}</td>
-												{{-- <td>{{$plan->description}}</td> --}}
 												<td>1</td>
 												<td>{{$plan->amount}}</td>
 												<td id="amount">{{$plan->amount}}</td>

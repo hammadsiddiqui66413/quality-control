@@ -7,6 +7,7 @@ use App\Models\Terminal;
 use App\Models\Client;
 use App\Models\Subscription;
 use App\Models\Report;
+use App\Models\Job;
 use App\Helpers\Helper;
 
 class ClientController extends Controller
@@ -59,9 +60,16 @@ class ClientController extends Controller
         return view('clients.invoice', compact('terminals', 'grandTotal', 'a', 'invoiceNo', 'vat', 'discount', 'subTotal', 'client'));
     }
 
-    public function reports()
+    public function jobs()
     {
-        $reports = Report::where('client_id', auth()->user()->id)->get();
+        $jobs = Job::where('client_id', auth()->user()->id)->get();
+        $i = 1;
+        return view('clients.jobs', compact('jobs', 'i'));
+    }
+
+    public function reports($id)
+    {
+        $reports = Report::where('job_id', $id)->get();
         $i = 1;
         return view('clients.reports', compact('reports', 'i'));
     }

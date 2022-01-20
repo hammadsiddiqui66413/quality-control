@@ -20,12 +20,12 @@
         </a>
     </li>
 
-    <li class="nav-item bt-1 {{ request()->routeIs('client.reports') ? 'active' : '' }}">
-        <a href="{{ route('client.reports') }}" class="nav-link">
+    <li class="nav-item bt-1 {{ request()->routeIs('client.jobs') ? 'active' : '' }}">
+        <a href="{{ route('client.jobs') }}" class="nav-link">
             <span class="sidebar-icon me-3">
                 <i class="fas fa-user-alt fa-fw"></i>
             </span>
-            <span class="sidebar-text">{{ __('Reports') }}</span>
+            <span class="sidebar-text">{{ __('Jobs') }}</span>
         </a>
     </li>
 
@@ -51,12 +51,12 @@
         </a>
     </li>
 
-    <li class="nav-item bt-1 {{ request()->routeIs('terminal.reports') ? 'active' : '' }}">
-        <a href="{{ route('terminal.reports') }}" class="nav-link">
+    <li class="nav-item bt-1 {{ request()->routeIs('terminal.jobs') ? 'active' : '' }}">
+        <a href="{{ route('terminal.jobs') }}" class="nav-link">
             <span class="sidebar-icon me-3">
                 <i class="fas fa-user-alt fa-fw"></i>
             </span>
-            <span class="sidebar-text">{{ __('Reports') }}</span>
+            <span class="sidebar-text">{{ __('Jobs') }}</span>
         </a>
     </li>
 
