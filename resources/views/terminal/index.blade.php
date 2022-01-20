@@ -15,7 +15,7 @@
                                                 <td class="left">
                                                     <strong>Client</strong>
                                                 </td>
-                                                <td class="right"><strong>{{$terminal->client->first_name}} {{$terminal->client->first_name}}</strong></td>
+                                                <td class="right"><strong>{{$terminal->client->first_name}} {{$terminal->client->last_name}}</strong></td>
                                             </tr>
                                             <tr>
                                                 <td class="left">
@@ -33,7 +33,7 @@
                                     </table>
                                 </div>
                                 <div class="col-8 qr-code">
-                                    
+                                    {{ QrCode::size(200)->generate(\Crypt::encryptString('c_id:'.$terminal->client->id.' t_id:'.$terminal->id)) }}
                                 </div>
                                 <div class="col-12 report-view">
 

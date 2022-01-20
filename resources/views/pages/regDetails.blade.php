@@ -22,7 +22,7 @@
 								</p> --}}
 
 								<!-- Button -->
-								<a href="{{ route('client.register', $plan->id) }}" class="btn btn-lg tra-hover m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+								<a href="{{ url()->previous() }}" class="btn btn-lg tra-hover m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
 							</div>
 						</div>
@@ -60,8 +60,8 @@
                                 <div>Email: admin@cartlow.com</div>
                                 <div>Phone: +48 123 456 789</div>
                             </div> --}}
-                            <div class="col-sm-12">
-                                <h6 class="mb-3">Your Details:</h6>
+                            <div class="col-sm-12" style="border-bottom: 1px solid #dddddd;">
+                                <h6 class="mb-3" style="border-bottom: 1px solid black;display: inline-block;font-weight: 600;">Your Details:</h6>
                                 {{-- <div>
                                     <strong>{{$requestData['first_name']}} {{$requestData['last_name']}}</strong>
                                 </div> --}}

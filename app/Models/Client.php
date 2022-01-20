@@ -32,6 +32,12 @@ class Client extends Authenticatable
 
     public function reports()
     {
-        return $this->hasMany(Reports::class);
+        return $this->hasMany(Report::class);
+    }
+
+
+    public function terminals()
+    {
+        return $this->hasMany(Terminal::class);
     }
 }
