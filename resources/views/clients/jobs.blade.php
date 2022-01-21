@@ -20,14 +20,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach($jobs as $job)
-                                        <tr>
+                                        <tr class="pr-5">
                                             <td class="p-0 v-a-m">{{$i++}}</td>
                                             <td>Job-{{$job->id}}</td>
-                                            <td>{{$job->status}}</td>
                                             <td>{{$job->ud_id}}</td>
-                                            <td>{{$job->terminal->name}}</td>
+                                            <td>{{$job->terminal->username}}</td>
                                             <td>
-                                                <a href="{{ route('client.reports' ,$job->id) }}">View</a>
+                                                <a href="{{ route('client.reports', $job->id) }}" onclick="window.open('{{ route('client.reports', $job->id, '_blank') }}');return false;" class="btn btn-success">View Report</a>
                                             </td>
                                         </tr>
                                         @endforeach

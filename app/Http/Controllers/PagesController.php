@@ -87,6 +87,12 @@ class PagesController extends Controller
 
     }
 
+    // public function backDetails(Request $request) 
+    // {   
+    //     $requestData = json_decode($request->requestData);
+    //     return redirect()->back()->with('requestData', $requestData);
+    // }
+
     public function thankyou(Request $request)
     {
         // DB::beginTransaction();

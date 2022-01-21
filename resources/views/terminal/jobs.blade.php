@@ -22,10 +22,9 @@
                                         <tr>
                                             <td class="p-0 v-a-m">{{$i++}}</td>
                                             <td>Job-{{$job->id}}</td>
-                                            <td>{{$job->status}}</td>
                                             <td>{{$job->ud_id}}</td>
                                             <td>
-                                                <a href="{{ route('terminal.reports' ,$job->id) }}">View</a>
+                                                <a href="{{ route('terminal.reports' ,$job->id) }}"  onclick="window.open('{{ route('terminal.reports', $job->id, '_blank') }}');return false;" class="btn btn-success">View Report</a>
                                             </td>
                                         </tr>
                                         @endforeach

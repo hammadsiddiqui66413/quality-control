@@ -23,4 +23,9 @@ class Report extends Model
     {
         return $this->belongsTo(Job::class);
     }
+
+    public function test()
+    {
+        return $this->belongsTo(Test::class);
+    }
 }

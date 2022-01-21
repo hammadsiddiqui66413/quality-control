@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Crypt;
+use PDF;
 
 class TerminalController extends Controller
 {
@@ -47,12 +48,13 @@ class TerminalController extends Controller
     {
 
         $reports = Report::where('job_id', $id)->get();
-        $i = 1;
         $terminal = Terminal::where('id', auth()->user()->id)->first();
         $job = Job::where('id', $id)->first();
         $client = $terminal->client;
+        $i = 1;
 
-        return view('terminal.reports', compact('reports', 'i'));
+        $pdf = PDF::loadView('terminal.reports', compact('reports', 'i','client','terminal','job'));
+        return $pdf->stream();
     }
 
     

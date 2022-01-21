@@ -13,20 +13,20 @@ class ApiController extends Controller
     {
 
         $decryptString = Crypt::decrypt();
-        $terminal = Terminal::where('id', $decryptString->t_id)->first();
+        $terminal = Terminal::where('id', auth()->user()->id)->first();
         $tests = $terminal->plan->tests;
 
         $job = new Job();
-        $job->client_id = $decryptString->c_id;
-        $job->terminal_id = $decryptString->t_id;
-        $job->ud_id = $decryptString->ud_id;
+        $job->client_id = $terminal->client->id;
+        $job->terminal_id = $terminal->id;
+        $job->ud_id = '123123456';
         $job->save();
 
         return response()->json([
-            't_id' => $decryptString->t_id,
-            'c_id' => $decryptString->c_id,
-            'ud_id' => $decryptString->ud_id,
-            'jobHash' => $job->id
+            't_id' => $terminal->id,
+            'c_id' => $terminal->client->id,
+            'ud_id' => '123123456',
+            'job_id' => $job->id
         ]);
     }
 }

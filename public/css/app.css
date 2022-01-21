@@ -34,10 +34,10 @@
   padding-top: 15px;
 }
 
-.scrollY-70{
+.scrollY-65{
   overflow-x: hidden !important;
   overflow-x: scroll;
-  height: 70px;
+  height: 65px;
 }
 
 .table-responsive .table td{

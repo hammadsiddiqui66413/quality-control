@@ -22,7 +22,12 @@
 								</p> --}}
 
 								<!-- Button -->
-								<a href="{{ url()->previous() }}" class="btn btn-lg tra-hover m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                {{-- <form action={{route('back.details', $requestData)}} method="POST">
+                                    @csrf
+                                    <input type="hidden" id="requestData" name="requestData" class="form-control" value="{{json_encode($requestData)}}">
+                                    <button type="submit" class="btn btn-lg m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                </form> --}}
+								{{-- <a href="{{ route() }}" class="btn btn-lg tra-hover m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a> --}}
 
 							</div>
 						</div>
@@ -139,7 +144,7 @@
                                 </div>
                                 <form action={{route('thankyou')}} method="POST">
                                     @csrf
-                                    <input readonly type="hidden" id="requestData" name="requestData" class="form-control" value="{{json_encode($requestData)}}">
+                                    <input type="hidden" id="requestData" name="requestData" class="form-control" value="{{json_encode($requestData)}}">
                                     <div class="row">
                                         <button type="submit" class="btn btn-lg m-top-20">Checkout <i class="fa fa-money" aria-hidden="true"></i></a>
                                     </div>

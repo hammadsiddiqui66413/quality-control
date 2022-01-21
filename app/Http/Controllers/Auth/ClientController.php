@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers\Auth;
-
+use App;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Terminal;
@@ -50,7 +50,7 @@ class ClientController extends Controller
 
         for($i=0; $i<$count; $i++)
         {
-            $amount[$i] = $terminals[$i]->plan->amount; 
+            $amount[$i] = $terminals[$i]->plan->amount;
             $subTotal += $amount[$i];
         }
         $vat = $subTotal*5/100;
@@ -64,17 +64,27 @@ class ClientController extends Controller
     {
         $jobs = Job::where('client_id', auth()->user()->id)->get();
         $i = 1;
+
         return view('clients.jobs', compact('jobs', 'i'));
     }
 
     public function reports($id)
     {
-        $reports = Report::where('job_id', $id)->get();
-        $i = 1;
         $client = Client::where('id', auth()->user()->id)->first();
         $job = Job::where('id', $id)->first();
         $terminal = $job->terminal;
-        
-        return view('clients.reports', compact('reports', 'i','client','terminal','job'));
+        $reports = Report::where('job_id', $id)->get();
+        $i = 1;
+
+        $view = view('clients.reports', compact('reports', 'i','client','terminal','job'));
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->setPaper('a4', 'portrait');
+        $pdf->getDomPDF()->set_option("enable_php", true);
+        $pdf = $pdf->loadHTML($view);
+        return $pdf->stream();
+
+        // $pdf = \PDF::loadView('clients.reports', compact('reports', 'i','client','terminal','job'));
+        // return $pdf->stream();
     }
 }

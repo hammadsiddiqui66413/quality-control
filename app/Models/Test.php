@@ -17,4 +17,9 @@ class Test extends Model
         return $this->belongsToMany(Plan::class, 'plan_test', 'test_id', 'plan_id')
                         ->withTimeStamps();
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
 }

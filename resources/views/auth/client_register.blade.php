@@ -40,7 +40,7 @@
                     <div class="register-heading text-center">
                         <h3>Create Account</h3>
                     </div>
-                    <form method="POST" class=register_form action="{{ route('registration.details') }}">
+                    <form method="POST" class="register_form" action="{{ route('registration.details') }}">
                         @csrf
                         <div class="row w-70">
                             <div class="col-6">
@@ -118,8 +118,8 @@
 
                             <div class="row clearfix">
                                 <div class="col-md-12">
-                                <button id="add_row" class="btn btn-default pull-left btn-gray-800" type="button">Add Row</button>
-                                <button id='delete_row' class="pull-right btn btn-default btn-gray-800" type="button">Delete Row</button>
+                                <button id="add_row" class="btn btn-default pull-left btn-gray-800" type="button">Add Plan</button>
+                                <button id='delete_row' class="pull-right btn btn-danger" type="button">Delete Plan</button>
                                 </div>
                             </div>
 

@@ -24,9 +24,9 @@
                                             <td class="p-0 v-a-m">{{$i++}}</td>
                                             <td>{{$terminal->username}}</td>
                                             <td style="margin: auto;">
-                                                <ul class="scrollY-70">
+                                                <ul class="scrollY-65">
                                                     @foreach($terminal->plan->tests as $pTest)
-                                                    <li>{{isset($pTest) ? $pTest->name: ""}}</li>
+                                                    <li style="list-style:none;border: 1px solid #dddddd;">{{isset($pTest) ? $pTest->name: ""}}</li>
                                                     @endforeach
                                                 </ul>
                                             </td>

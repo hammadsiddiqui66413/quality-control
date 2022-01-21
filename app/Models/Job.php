@@ -16,7 +16,7 @@ class Job extends Model
 
     public function terminal()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Terminal::class);
     }
 
     public function client()
