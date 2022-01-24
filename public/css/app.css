@@ -30,8 +30,11 @@
 
 .qr-text{
   text-align: right;
-  padding-right: 70px;
   padding-top: 15px;
+}
+
+.qr-text h6 {
+  margin-right: 6%;
 }
 
 .scrollY-65{

@@ -68,6 +68,7 @@ Route::prefix('client')->group(function() {
     Route::get('/', [ClientController::class,'index'])->name('client.dashboard');
     Route::get('/terminals', [ClientController::class,'terminals'])->name('client.terms');
     Route::get('/invoice', [ClientController::class,'invoice'])->name('client.invoice');
+    Route::get('/invoice-pdf', [ClientController::class,'invoicePdf'])->name('client.invoicePdf');
     Route::get('/generate-reports-pdf/{id}', [ClientController::class, 'reports'])->name('client.reports');
     Route::get('/jobs', [ClientController::class,'jobs'])->name('client.jobs');
 });

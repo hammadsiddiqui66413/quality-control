@@ -22,4 +22,10 @@ class Plan extends Model
     {
         return $this->hasMany(Terminal::class);
     }
+
+    public function getAvailableTests()
+    {
+        
+        return Plan::with('tests')->get(array('id','name'))->where('status', 'complete');
+    }
 }

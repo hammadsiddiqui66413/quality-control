@@ -12,6 +12,7 @@
                                     <table class="table table-clear">
                                         <tbody>
                                             <tr>
+                                                <strong>Dashboard</strong>
                                                 <td class="left">
                                                     <strong>Client</strong>
                                                 </td>
@@ -32,8 +33,11 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                @php
+                                    $hash = \Crypt::encryptString('c_id:'.$terminal->client->id.'t_id:'.$terminal->id);
+                                @endphp
                                 <div class="col-8 qr-code">
-                                    {{ QrCode::size(200)->generate(\Crypt::encryptString('c_id:'.$terminal->client->id.' t_id:'.$terminal->id)) }}
+                                    {{ QrCode::size(200)->generate(json_encode($hash)) }}
                                 </div>
                                 <div class="col-12 qr-text">
                                     <h6 class="">Scan Here</h6>

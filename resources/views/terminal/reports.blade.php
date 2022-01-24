@@ -22,7 +22,7 @@ li {
 
 }
 
-.main-table td, #main-table th {
+.main-table td, .main-table th {
     border-bottom: 1px solid #ddd;
     padding: 8px;
     width: auto;
