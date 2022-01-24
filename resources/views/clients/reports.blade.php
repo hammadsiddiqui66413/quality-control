@@ -45,8 +45,16 @@ li {
     width: 100%;
 }
 
-..table-responsive .table{
+/* .table-responsive .table{
     width: auto;
+} */
+
+.p-0 {
+    padding: 0;
+}
+
+.v-a-m {
+    vertical-align: middle;
 }
 
 
@@ -110,17 +118,17 @@ li {
                                         <table id="second-table" class=" table-responsive table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center p-0 v-a-m">Sr.</th>
-                                                    <th class="text-center">Test</th>
-                                                    <th class="text-center">Status</th>
+                                                    <th class="text-center" style="padding-left:0;padding-right:0;">Sr.</th>
+                                                    <th class="text-center" style="padding-left:0;padding-right:0;">Test</th>
+                                                    <th class="text-center" style="padding-left:0;padding-right:0;">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($reports as $report)
                                                 <tr>
-                                                    <td style="text-align:center;" class="p-0 v-a-m">{{$i++}}</td>
-                                                    <td style="text-align:center;">{{$report->test->name}}</td>
-                                                    <td style="text-align:center;">{{$report->status}}</td>
+                                                    <td style="text-align:center;padding-left:0;padding-right:0;">{{$i++}}</td>
+                                                    <td style="text-align:center;padding-left:0;padding-right:0;">{{$report->test->name}}</td>
+                                                    <td style="text-align:center;padding-left:0;padding-right:0;">{{$report->status}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

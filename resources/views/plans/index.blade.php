@@ -30,7 +30,7 @@
                             <td>{{$plan->time}}</td>
                             <td>{{$plan->timely_tests}}</td>
                             <td>
-                                <ul class="list-unstyled">
+                                <ul class="list-unstyled scrollY-65">
                                     @foreach($plan->tests as $pTest)
                                     <li class="test-list">
                                         {{isset($pTest) ? $pTest->name:""}}
