@@ -52,9 +52,7 @@
                                 <table class="table table-bordered table-clear">
                                     <tbody>
                                         <tr style="border-bottom: 1px solid #dddddd;display: inline-block;">
-                                            <td class="left">
-                                                <strong style="font-weight: 600;">Your Details:</strong>
-                                            </td>
+                                            <strong style="font-weight: 600;">Your Details:</strong>
                                         </tr>
                                         <tr>
                                             <td class="left">

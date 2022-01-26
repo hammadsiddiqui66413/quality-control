@@ -16,10 +16,11 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => Hash::make('123123123'), // password
-            'remember_token' => Str::random(10),
+            // 'first_name' => $this->faker->name(),
+            // 'last_name' => $this->faker->word(),
+            // 'email' => $this->faker->unique()->safeEmail(),
+            // 'password' => Hash::make('123123123'), // password
+            // 'remember_token' => Str::random(10),
         ];
     }
 }

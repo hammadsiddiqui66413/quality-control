@@ -25,7 +25,6 @@ class Plan extends Model
 
     public function getAvailableTests()
     {
-        
-        return Plan::with('tests')->get(array('id','name'))->where('status', 'complete');
+        return $this->tests->where('status', '1')->get(array('id','name'));
     }
 }

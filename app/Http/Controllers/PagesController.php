@@ -33,6 +33,12 @@ class PagesController extends Controller
 
         return view('pages.plans',compact('mPlans', 'yPlans'));
     }
+    
+    public function planDetail($id)
+    {
+        $plan = Plan::findOrFail($id);
+        return view('pages.planDetail', compact('plan'));
+    }
 
     public function getAmountByPlan(Request $request)
     {
@@ -40,12 +46,6 @@ class PagesController extends Controller
         $amount = $plan->amount;
 
         return response()->json(['status'=>'200', 'amount'=>$amount]);
-    }
-
-    public function planDetail($id)
-    {
-        $plan = Plan::findOrFail($id);
-        return view('pages.planDetail', compact('plan'));
     }
 
     public function regDetails(Request $request)
@@ -61,8 +61,6 @@ class PagesController extends Controller
 
         try{
             $requestData = $request->all();
-            // Log::debug('plan_id array');
-            // Log::debug(json_encode($request->plan_id));
             $plans = Plan::whereIn('id', $request->plan_id)->get();
             $count = $plans->count();
             $a = 1;
@@ -100,7 +98,6 @@ class PagesController extends Controller
         // try{
             $requestData = json_decode($request->requestData);
             $count = Plan::whereIn('id', $requestData->plan_id)->get()->count();
-            // dd($count, $requestData->plan_id);
 
             // CREATE CLIENT
             $client = new Client();
@@ -145,7 +142,6 @@ class PagesController extends Controller
             }    
 
             Mail::to($client->email)->send(new TestMail($details));
-
 
             return view('pages.thankyou');
 

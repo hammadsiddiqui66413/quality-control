@@ -36,8 +36,7 @@ li {
 }
 
 #second-table {
-    position: relative;
-    top: 15%;
+    margin-top: 20%;
 }
 
 .table-responsive{
@@ -105,6 +104,8 @@ li {
                                         </table>
                                     </li>
                                 </ul>
+                            </div>  
+                            <div class="row">
                                 <div class="col-12 col-xl-12  pt-5" style="padding-top:20px;">
                                     <div class="table-responsive">
                                         <table id="second-table" class=" table-responsive table table-striped table-bordered">

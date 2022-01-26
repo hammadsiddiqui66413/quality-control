@@ -6,13 +6,15 @@
             <div class="col-12 col-xl-12">
                 <div class="col-12 px-0">
                     <div class="card border-0 shadow">
+                        <div class="card-header">                           
+                            <h3><strong>Dashboard</strong></h3>
+                        </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-4">
                                     <table class="table table-clear">
                                         <tbody>
                                             <tr>
-                                                <strong>Dashboard</strong>
                                                 <td class="left">
                                                     <strong>Client</strong>
                                                 </td>
@@ -34,10 +36,11 @@
                                     </table>
                                 </div>
                                 @php
-                                    $hash = \Crypt::encryptString('c_id:'.$terminal->client->id.'t_id:'.$terminal->id);
+                                    $hash = Crypt::encryptString(json_encode(['c_id' => $terminal->client->id, 't_id' => $terminal->id]));
                                 @endphp
                                 <div class="col-8 qr-code">
-                                    {{ QrCode::size(200)->generate(json_encode($hash)) }}
+                                {{$hash}}
+                                    {{ QrCode::size(200)->generate($hash) }}
                                 </div>
                                 <div class="col-12 qr-text">
                                     <h6 class="">Scan Here</h6>

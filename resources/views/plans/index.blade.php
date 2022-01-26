@@ -15,7 +15,7 @@
                             <th>Description</th>
                             <th>Amount</th>
                             <th>Time</th>
-                            <th>No of Tests</th>
+                            <th>Test Allowed</th>
                             <th>Plan's Tests</th>
                             <th>Actions</th>
                         </tr>

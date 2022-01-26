@@ -7,6 +7,7 @@
                 <div class="col-12 px-0">
                     <div class="card border-0 shadow">
                         <div class="card-body">
+                            <a href="{{ route('client.createTerminal') }}" class="add-btn">Add Terminal</a>
                             <div class="table-responsive">
                                 <table id="example" class=" table-responsive table table-striped table-bordered" style="width:100%;">
                                     <thead>

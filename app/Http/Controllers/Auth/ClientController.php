@@ -2,14 +2,19 @@
 namespace App\Http\Controllers\Auth;
 use App;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Terminal;
 use App\Models\Client;
 use App\Models\Subscription;
 use App\Models\Report;
 use App\Models\Job;
+use App\Models\Plan;
 use App\Helpers\Helper;
 use PDF;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 class ClientController extends Controller
 {
@@ -37,6 +42,55 @@ class ClientController extends Controller
         $terminals = Terminal::where('client_id', auth()->user()->id)->get();
         $i = 1;
         return view('clients.terminal', compact('terminals', 'i'));
+    }
+
+    public function addTerminal()
+    {
+        $plans = Plan::all();
+        return view('clients.createTerminal', compact('plans'));
+    }
+
+    public function storeTerminal(Request $request)
+    {
+        $client =  auth()->user();
+        $count = Plan::whereIn('id', $request->plan_id)->get()->count();
+        $details = array();
+
+        for($i=0; $i<$count; $i++)
+        {
+            $rand_password = Helper::rand_string(8);
+            $terminal = new Terminal();
+            $terminal->username = 'ctp';
+            $terminal->password = Hash::make($rand_password);
+            $terminal->client_id = $client->id;
+            $terminal->plan_id = $request->plan_id[$i];
+            $terminal->save();
+
+            $terminal->username = 'ctp'.$client->id.$terminal->id;
+            $terminal->update();
+
+            $username[$i] = $terminal->username;
+            $password[$i] = $rand_password;
+
+            array_push($details, [
+                'username' => isset($username[$i]) ? $username[$i] : null,
+                'password' => isset($password[$i]) ? $password[$i] : null
+            ]);
+        
+            // CREATE SUBSCRIPTION
+            $subscription = new Subscription();
+            $plan = Plan::where('id', $terminal->plan_id)->first();
+            $plan->time == 'monthly' ? $subscription->end_date=Carbon::now()->addMonth() : $subscription->end_date=Carbon::now()->addYear();
+            $subscription->start_date = Carbon::now();
+            $subscription->terminal_id = $terminal->id;
+            $subscription->client_id = $client->id;
+            $subscription->plan_id = $terminal->plan_id;
+            $subscription->save();
+        }    
+
+        Mail::to($client->email)->send(new TestMail($details));
+
+        return redirect()->route('client.terms');
     }
 
     public function invoice()

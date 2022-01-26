@@ -36,8 +36,7 @@ li {
 }
 
 #second-table {
-    position: relative;
-    top: 15%;
+    margin-top: 20%;
 }
 
 .table-responsive{
