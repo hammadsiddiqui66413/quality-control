@@ -22,12 +22,7 @@
 								</p> --}}
 
 								<!-- Button -->
-                                {{-- <form action={{route('back.details', $requestData)}} method="POST">
-                                    @csrf
-                                    <input type="hidden" id="requestData" name="requestData" class="form-control" value="{{json_encode($requestData)}}">
-                                    <button type="submit" class="btn btn-lg m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-                                </form> --}}
-								{{-- <a href="{{ route() }}" class="btn btn-lg tra-hover m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a> --}}
+								<a onclick="window.history.back()" class="btn btn-lg tra-hover m-top-20">Go Back and Edit <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 
 							</div>
 						</div>
@@ -154,15 +149,15 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you Sure?
+                                                        Please proceed to confirm?
                                                     </div>
                                                     <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn">Proceed</a>
+                                                    <button type="submit" class="btn btn-info">Proceed</a>
                                                     </div>
                                                 </div>
                                             </div>

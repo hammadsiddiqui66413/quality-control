@@ -1,11 +1,14 @@
 @extends('layouts.master')
 
 @section('cardTitle', 'Plans')
+@section('anything')
+    <a href="{{ route('plans.create') }}" class="d-inline-block add-btn float-end">Add Plan</a>
+    <a href="{{ route('plans.trashed') }}" class="d-inline-block add-btn float-end">Trashed Plans</a>
+@endsection
 @section('body')
     <div class="container">
         <div class="row">
-            <a href="{{ route('plans.create') }}" class="add-btn">Add Plan</a>
-            <a href="{{ route('plans.trashed') }}" class="add-btn">Trashed Plans</a>
+
             <div class="table-responsive">
                 <table id="example" class=" table-responsive table table-striped table-bordered" style="width:100%">
                     <thead>

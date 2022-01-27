@@ -27,8 +27,7 @@
 
         #second-table {
             width: 100%;
-            position: relative;
-            top: 20%;
+            margin-top: 30%;
         }
 
         .table-responsive{
@@ -164,7 +163,7 @@
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-                                                                
+
                                                             </div>
                                                         </div>
                                                     </div>

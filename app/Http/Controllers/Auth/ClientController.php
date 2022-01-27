@@ -27,14 +27,24 @@ class ClientController extends Controller
     {
         $this->middleware('auth:client');
     }
-    /**
-     * show dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('clients.index');
+        $client = Client::where('id', auth()->user()->id)->first();
+        $jobCount = count($client->jobs);
+        $terminals = $client->terminals;
+        $terminalCount = count($client->terminals);
+        $amountSpent = 0;
+        for($i=0; $i<$terminalCount; $i++)
+        {
+            $planPrice[$i] = $terminals[$i]->plan->amount;
+            $amountSpent += $planPrice[$i];
+        }
+        $vat = $amountSpent*5/100;
+        $discount = $amountSpent*0/100;
+        $grandTotal = $amountSpent+$vat-$discount;
+
+        return view('clients.index', compact('client', 'terminals', 'terminalCount', 'amountSpent', 'jobCount', 'grandTotal'));
     }
 
     public function terminals()
@@ -53,7 +63,7 @@ class ClientController extends Controller
     public function storeTerminal(Request $request)
     {
         $client =  auth()->user();
-        $count = Plan::whereIn('id', $request->plan_id)->get()->count();
+        $count = Plan::whereIn('id', $request->plan_id)->count();
         $details = array();
 
         for($i=0; $i<$count; $i++)
@@ -65,18 +75,16 @@ class ClientController extends Controller
             $terminal->client_id = $client->id;
             $terminal->plan_id = $request->plan_id[$i];
             $terminal->save();
-
             $terminal->username = 'ctp'.$client->id.$terminal->id;
             $terminal->update();
 
             $username[$i] = $terminal->username;
             $password[$i] = $rand_password;
-
             array_push($details, [
                 'username' => isset($username[$i]) ? $username[$i] : null,
                 'password' => isset($password[$i]) ? $password[$i] : null
             ]);
-        
+
             // CREATE SUBSCRIPTION
             $subscription = new Subscription();
             $plan = Plan::where('id', $terminal->plan_id)->first();
@@ -86,10 +94,9 @@ class ClientController extends Controller
             $subscription->client_id = $client->id;
             $subscription->plan_id = $terminal->plan_id;
             $subscription->save();
-        }    
+        }
 
         Mail::to($client->email)->send(new TestMail($details));
-
         return redirect()->route('client.terms');
     }
 
@@ -161,8 +168,5 @@ class ClientController extends Controller
         $pdf->getDomPDF()->set_option("enable_php", true);
         $pdf = $pdf->loadHTML($view);
         return $pdf->stream();
-
-        // $pdf = \PDF::loadView('clients.reports', compact('reports', 'i','client','terminal','job'));
-        // return $pdf->stream();
     }
 }

@@ -14,7 +14,7 @@ class ApiController extends Controller
 {
     public function getPlanTests(Request $request)
     {
-        try{    
+        try{
            $decrypted = Crypt::decryptString($request->hash);
             $decoded = json_decode($decrypted, true);
             $terminal_id = $decoded['t_id'];
@@ -41,7 +41,7 @@ class ApiController extends Controller
         }
     }
 
-    public function storeReports(Request $request) 
+    public function storeReports(Request $request)
     {
         $decrypted = Crypt::decryptString($request->hash);
         $decoded = json_decode($decrypted, true);
@@ -66,7 +66,7 @@ class ApiController extends Controller
             $report->save();
         }
 
-        return response()->json(['status' => true, 'Message' => 'Report Genetrated Successfully'])
+        return response()->json(['status' => true, 'Message' => 'Report Genetrated Successfully']);
     }
 }
 

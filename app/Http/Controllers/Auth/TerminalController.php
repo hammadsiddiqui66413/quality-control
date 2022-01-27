@@ -29,11 +29,6 @@ class TerminalController extends Controller
     public function index()
     {
         $terminal = Terminal::where('id', auth()->user()->id)->first();
-        
-        // $encryptedQr = QrCode::size(200)
-        //     ->format('png')
-        //     ->generate(Crypt::encryptString('c_id:'.$terminal->client->id.' t_id:'.$terminal->id), storage_path('qrcode/code_'.time().'.png')); 
-
         return view('terminal.index', compact('terminal'));
     }
 
@@ -57,5 +52,5 @@ class TerminalController extends Controller
         return $pdf->stream();
     }
 
-    
+
 }

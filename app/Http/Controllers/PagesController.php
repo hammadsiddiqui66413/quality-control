@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 class PagesController extends Controller
 {
@@ -33,7 +34,7 @@ class PagesController extends Controller
 
         return view('pages.plans',compact('mPlans', 'yPlans'));
     }
-    
+
     public function planDetail($id)
     {
         $plan = Plan::findOrFail($id);
@@ -77,6 +78,7 @@ class PagesController extends Controller
                 $grandTotal = $subtotal+$vat-$discount;
             }
 
+            Cache::put('requestData', $requestData);
             return view('pages.regDetails', compact('requestData', 'plans', 'a', 'grandTotal','vat', 'discount', 'subtotal'));
         }catch(\Exception $e)
         {
@@ -85,10 +87,12 @@ class PagesController extends Controller
 
     }
 
-    // public function backDetails(Request $request) 
-    // {   
+    // public function backDetails(Request $request)
+    // {
     //     $requestData = json_decode($request->requestData);
-    //     return redirect()->back()->with('requestData', $requestData);
+    //     $previousUrl = app('url')->previous();
+    //     return redirect()->to($previousUrl.'?'. http_build_query(['requestData'=>$requestData]));
+    //     // return redirect()->back()->with('requestData', $requestData);
     // }
 
     public function thankyou(Request $request)
@@ -129,7 +133,7 @@ class PagesController extends Controller
                     'username' => isset($username[$i]) ? $username[$i] : null,
                     'password' => isset($password[$i]) ? $password[$i] : null
                 ]);
-            
+
                 // CREATE SUBSCRIPTION
                 $subscription = new Subscription();
                 $plan = Plan::where('id', $terminal->plan_id)->first();
@@ -139,7 +143,7 @@ class PagesController extends Controller
                 $subscription->client_id = $client->id;
                 $subscription->plan_id = $terminal->plan_id;
                 $subscription->save();
-            }    
+            }
 
             Mail::to($client->email)->send(new TestMail($details));
 

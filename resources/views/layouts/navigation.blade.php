@@ -2,8 +2,8 @@
     @if(Illuminate\Support\Str::contains(Route::currentRouteName(), 'client'))
     <li class="nav-item">
         <a href="{{ route('client.dashboard') }}" class="nav-link d-flex align-items-center">
-            <span class="sidebar-icon me-1">
-                <img src="{{ asset('images/Quality-Control.jpg') }}" height="30" width="35" alt="Volt Logo">
+            <span class="sidebar-icon me-1 w-12 ">
+                <img src="{{ asset('assets/images/apple-touch-icon.png') }}" height="30" width="35" alt="Volt Logo">
             </span>
             <span class="mt-1 ms-1 sidebar-text">
                 Dashboard
@@ -42,8 +42,8 @@
 
     <li class="nav-item">
         <a href="{{ route('terminal.dashboard') }}" class="nav-link d-flex align-items-center">
-            <span class="sidebar-icon me-1">
-                <img src="{{ asset('images/Quality-Control.jpg') }}" height="30" width="35" alt="Volt Logo">
+            <span class="sidebar-icon me-1 w-12 ">
+                <img src="{{ asset('assets/images/apple-touch-icon.png') }}" height="30" width="35" alt="Volt Logo">
             </span>
             <span class="mt-1 ms-1 sidebar-text">
                 Dashboard
@@ -63,8 +63,8 @@
     @else
     <li class="nav-item">
         <a href="{{ route('home') }}" class="nav-link d-flex align-items-center">
-            <span class="sidebar-icon me-1">
-                <img src="{{ asset('images/Quality-Control.jpg') }}" height="30" width="35" alt="Volt Logo">
+            <span class="sidebar-icon me-1 w-12 ">
+                <img src="{{ asset('assets/images/apple-touch-icon.png') }}" height="30" width="35" alt="Volt Logo">
             </span>
             <span class="mt-1 ms-1 sidebar-text">
                 Dashboard
